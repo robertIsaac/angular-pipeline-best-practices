@@ -18,6 +18,7 @@ module.exports = tseslint.config(
     processor: angular.processInlineTemplates,
     rules: {
       "sort-imports": ["error", { ignoreDeclarationSort: true }],
+      "no-duplicate-imports": "error",
       "@angular-eslint/directive-selector": [
         "error",
         {
@@ -34,6 +35,7 @@ module.exports = tseslint.config(
           style: "kebab-case",
         },
       ],
+      "@angular-eslint/prefer-standalone": "error",
       "import/newline-after-import": "error",
       "import/order": [
         "error",
@@ -50,7 +52,15 @@ module.exports = tseslint.config(
       ...angular.configs.templateRecommended,
       ...angular.configs.templateAccessibility,
     ],
-    rules: {},
+    rules: {
+      "@angular-eslint/template/attributes-order": [
+        "error",
+        {
+          alphabetical: true,
+        },
+      ],
+      "@angular-eslint/template/prefer-control-flow": "error",
+    },
   },
   eslintConfigPrettier,
 );
