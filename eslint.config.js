@@ -3,6 +3,7 @@ const eslint = require("@eslint/js");
 const tseslint = require("typescript-eslint");
 const angular = require("angular-eslint");
 const eslintConfigPrettier = require("eslint-config-prettier");
+const importPlugin = require("eslint-plugin-import");
 
 module.exports = tseslint.config(
   {
@@ -13,8 +14,10 @@ module.exports = tseslint.config(
       ...tseslint.configs.stylistic,
       ...angular.configs.tsRecommended,
     ],
+    plugins: { import: importPlugin },
     processor: angular.processInlineTemplates,
     rules: {
+      "sort-imports": ["error", { ignoreDeclarationSort: true }],
       "@angular-eslint/directive-selector": [
         "error",
         {
@@ -29,6 +32,14 @@ module.exports = tseslint.config(
           type: "element",
           prefix: "app",
           style: "kebab-case",
+        },
+      ],
+      "import/newline-after-import": "error",
+      "import/order": [
+        "error",
+        {
+          alphabetize: { order: "asc" },
+          "newlines-between": "never",
         },
       ],
     },
