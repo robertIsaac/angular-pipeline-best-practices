@@ -12,6 +12,7 @@ module.exports = tseslint.config(
       eslint.configs.recommended,
       ...tseslint.configs.recommendedTypeChecked,
       ...tseslint.configs.stylisticTypeChecked,
+      ...tseslint.configs.strictTypeChecked,
       ...angular.configs.tsRecommended,
     ],
     plugins: { import: importPlugin },
